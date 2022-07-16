@@ -11,7 +11,7 @@ export function load() {
     const networkMover = CellType.create({
         id: "jm.network.network_mover",
         name: "Network Mover",
-        description: "too hard to explain :skull:",
+        description: "Same as mover, but works on a network? (i have no idea)",
         behavior: class NetworkCell extends Cell {
             private doAction(action: Action) {
                 switch (action.type) {

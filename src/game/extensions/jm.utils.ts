@@ -23,7 +23,7 @@ export function load() {
         id: "jm.utils.orientator",
         __rawId: 10,
         name: "Orientator",
-        description: "Rotates all four touching cells in the direction it is looking.",
+        description: "Rotates all four touching cells in the direction it is facing.",
         behavior: class OrientatorCell extends Cell {
             override update() {
                 this.grid.cells.get(this.pos.mi(Direction.Right))?.setRotation(this.direction);
@@ -205,7 +205,7 @@ export function load() {
     const note = CellType.create({
         id: "jm.utils.note",
         name: "Note Cell",
-        description: "Deletes it's inputs but plays a note when doing so.\nPitch is based on the Y-axis.",
+        description: "Deletes the input and plays a note when doing so.\nPitch is based on the Y-axis.",
         behavior: class NoteCell extends Cell {
             override debugText() {
                 return "Note: " + noteNames[this.pos.y % noteNames.length];

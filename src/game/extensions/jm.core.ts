@@ -146,7 +146,7 @@ export function load() {
         id: "jm.core.enemy",
         __rawId: 7,
         name: "Enemy",
-        description: "When pushed, destroys the pushing cell and dies itself. Used in levels and vaults.",
+        description: "When pushed, destroys the pushing cell and deletes itself. Used in levels and vaults.",
         behavior: class EnemyCell extends Cell {
             override push(dir: Direction, bias: number) {
                 // TODO: fix bug where enemies don't break when disabled before
@@ -163,7 +163,7 @@ export function load() {
         id: "jm.core.trash",
         __rawId: 8,
         name: "Trash",
-        description: "Deletes all incoming cells. Does not die itself.",
+        description: "Deletes all incoming cells. Does not delete itself.",
         behavior: class TrashCell extends Cell {
             override push(dir: Direction, bias: number) {
                 if (this.disabled) return super.push(dir, bias);
@@ -183,7 +183,6 @@ export function load() {
             override push() {
                 return false;
             }
-
             override rotate() {}
             override setRotation() {}
             override disable() {}
