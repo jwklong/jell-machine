@@ -1,6 +1,6 @@
 {
-    "name": "jell-machine",
-    "productName": "Jell Machine",
+    "name": "jell-machine-plus",
+    "productName": "Jell Machine Plus",
     "version": "1.0.0",
     "description": "",
     "main": "src/dist/index.js",
