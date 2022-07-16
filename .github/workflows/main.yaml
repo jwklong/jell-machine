@@ -19,16 +19,16 @@ jobs:
       - name: Upload Windows build
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: Windows
-          path: dist/Jell Machine-win32-x64
+          name: JellMachinePlus_win
+          path: dist/Jell Machine Plus-win32-x64
           if-no-files-found: error
       - name: Build project for Linux
         run: npm run build:electron:linux
       - name: Upload Linux build
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: Linux
-          path: dist/Jell Machine-linux-x64
+          name: JellMachinePlus_linux
+          path: dist/Jell Machine Plus-linux-x64
           if-no-files-found: error
   build-mac:
     runs-on: macos-latest
@@ -46,6 +46,6 @@ jobs:
       - name: Upload Mac build
         uses: actions/upload-artifact@v2.2.4
         with:
-          name: MacOS
+          name: JellMachinePlus_mac
           path: dist/MacOS.tar
           if-no-files-found: error
