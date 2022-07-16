@@ -57,7 +57,7 @@ export function load() {
         },
         textureName: "disabler",
         updateType: UpdateType.Random,
-        updateOrder: 0,
+        updateOrder: -128,
     });
 
     //#region note cell
@@ -242,18 +242,19 @@ export function load() {
             private get isGen() { return this.grid.tickCount == this._generatedIn; }
 
             override update() {
-                if (this.isGen || ($config.canDisableJell && this.disabled)) return;
+                if (this.isGen) return;
                 // TODO: fix
+                if (!($config.canDisableJell && this.disabled)) {
+                    const rightCell = this.grid.cells.get(this.pos.mi(Direction.Right));
+                    const downCell = this.grid.cells.get(this.pos.mi(Direction.Down));
+                    const leftCell = this.grid.cells.get(this.pos.mi(Direction.Left));
+                    const upCell = this.grid.cells.get(this.pos.mi(Direction.Up));
 
-                const rightCell = this.grid.cells.get(this.pos.mi(Direction.Right));
-                const downCell = this.grid.cells.get(this.pos.mi(Direction.Down));
-                const leftCell = this.grid.cells.get(this.pos.mi(Direction.Left));
-                const upCell = this.grid.cells.get(this.pos.mi(Direction.Up));
-
-                if (rightCell && rightCell.type != this.type) this.grid.loadCell(rightCell.pos, this.type, rightCell.direction);
-                if (downCell && downCell.type != this.type) this.grid.loadCell(downCell.pos, this.type, downCell.direction);
-                if (leftCell && leftCell.type != this.type) this.grid.loadCell(leftCell.pos, this.type, leftCell.direction);
-                if (upCell && upCell.type != this.type) this.grid.loadCell(upCell.pos, this.type, upCell.direction);
+                    if (rightCell && rightCell.type != this.type) this.grid.loadCell(rightCell.pos, this.type, rightCell.direction);
+                    if (downCell && downCell.type != this.type) this.grid.loadCell(downCell.pos, this.type, downCell.direction);
+                    if (leftCell && leftCell.type != this.type) this.grid.loadCell(leftCell.pos, this.type, leftCell.direction);
+                    if (upCell && upCell.type != this.type) this.grid.loadCell(upCell.pos, this.type, upCell.direction);
+                }
             }
         },
         textureName: "jell",
