@@ -15,3 +15,4 @@
 <p><b>Tick Speed (ms):</b> <input type="number" bind:value={$config.tickSpeed}></p>
 <p><b>UI Scale:</b> <input type="number" bind:value={$config.uiScale}></p>
 <p><b>Animations:</b> <input type="checkbox" bind:checked={$config.animation}></p>
+<p><b>Can disable Jell:</b> <input type="checkbox" bind:checked={$config.canDisableJell}></p>

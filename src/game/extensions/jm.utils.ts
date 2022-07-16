@@ -242,7 +242,7 @@ export function load() {
             private get isGen() { return this.grid.tickCount == this._generatedIn; }
 
             override update() {
-                if (this.isGen) return;
+                if (this.isGen || ($config.canDisableJell && this.disabled)) return;
                 // TODO: fix
 
                 const rightCell = this.grid.cells.get(this.pos.mi(Direction.Right));
