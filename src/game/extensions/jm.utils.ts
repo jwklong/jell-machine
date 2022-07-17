@@ -240,11 +240,12 @@ export function load() {
         behavior: class JellCell extends Cell {
             private _generatedIn = this.grid.initial ? -1 : this.grid.tickCount;
             private get isGen() { return this.grid.tickCount == this._generatedIn; }
+            private canDisableJell = $config.canDisableJell //some stupid fix
 
             override update() {
                 if (this.isGen) return;
                 // TODO: fix
-                if (!($config.canDisableJell && this.disabled)) {
+                if (!(canDisableJell && this.disabled)) {
                     const rightCell = this.grid.cells.get(this.pos.mi(Direction.Right));
                     const downCell = this.grid.cells.get(this.pos.mi(Direction.Down));
                     const leftCell = this.grid.cells.get(this.pos.mi(Direction.Left));

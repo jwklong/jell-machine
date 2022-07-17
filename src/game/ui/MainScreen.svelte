@@ -43,10 +43,12 @@
         }
     }
     const tips = [
-        "Jell Machine was inspired by Pyll Machine",
-        "This project is fully free and open source",
-        "Try to use keyboard shortcuts as much as you can",
-        "Jell Machine has terrible performance lol",
+        "Plus DLC: Only $420.69",
+        "i forgor",
+        "how do these keybinds work",
+        "these are supposed to be tips",
+        "me when the",
+        "cell machine 2 is coming soon"
     ];
     let tip: string;
     $: if (visible) tip = tips[Math.floor(Math.random() * tips.length)];
