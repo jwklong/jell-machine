@@ -269,7 +269,7 @@ export function load() {
         description: "Randomly rotates the cell infront of it.",
         behavior: class RandomCell extends Cell {
             override update() {
-                const pos = this.getCellTo((Direction.Right + this.direction) % 4);
+                const pos = this.getCellTo(this.direction);
                 if (!pos) return;
 
                 this.grid.cells.get(pos[0])?.rotate(Math.random() > 0.5 ? 1 : -1);
@@ -475,7 +475,7 @@ export function load() {
                         const front = cell.getCellTo(cell.direction);
                         cell.rm();
                         if (front) {
-                            this.grid.cells.get(front[0])?.push((front[1] + 2) % 4, 1);
+                            this.grid.cells.get(front[0])?.push((front[1] + 2) & 3, 1);
                         }
                     }
 
@@ -726,7 +726,13 @@ export function load() {
                 }
             }
 
-            const compressed = deflateRawSync(Buffer.from(cellData)).toString("base64");
+            const compressed = deflateRawSync(
+                Buffer.from(cellData),
+                {
+                    level: 9,
+                    memLevel: 9,
+                },
+            ).toString("base64");
 
             const result = [
                 "J1",
