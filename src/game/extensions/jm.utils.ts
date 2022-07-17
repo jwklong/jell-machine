@@ -245,7 +245,7 @@ export function load() {
             override update() {
                 if (this.isGen) return;
                 // TODO: fix
-                if (!(canDisableJell && this.disabled)) {
+                if (!(this.canDisableJell && this.disabled)) {
                     const rightCell = this.grid.cells.get(this.pos.mi(Direction.Right));
                     const downCell = this.grid.cells.get(this.pos.mi(Direction.Down));
                     const leftCell = this.grid.cells.get(this.pos.mi(Direction.Left));
